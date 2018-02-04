@@ -1,13 +1,13 @@
-package queue
+package topic
 
 import org.apache.activemq.ActiveMQConnectionFactory
-import org.apache.activemq.command.ActiveMQQueue
+import org.apache.activemq.command.ActiveMQTopic
 
 import javax.jms.Session
 import javax.jms.TextMessage
 
 def url = "tcp://192.168.31.145:61616"
-def name = "queue-test"
+def name = "topic-test"
 
 // 创建ConnectionFactory
 def connectionFactory = new ActiveMQConnectionFactory(url)
@@ -17,7 +17,7 @@ connection = connectionFactory.createConnection()
 connection.start()
 
 // 创建目的地
-destination = new ActiveMQQueue(name)
+destination = new ActiveMQTopic(name)
 
 // 创建会话
 session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE)
